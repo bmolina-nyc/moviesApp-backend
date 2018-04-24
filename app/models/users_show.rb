@@ -1,0 +1,2 @@
+class UsersShow < ApplicationRecord
+end

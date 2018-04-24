@@ -1,0 +1,2 @@
+class UsersEpisode < ApplicationRecord
+end
