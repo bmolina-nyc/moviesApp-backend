@@ -8,6 +8,8 @@ class AuthController < ApplicationController
         if user && user.authenticate(params[:password])
           token = encode_token({user_id: user.id})  # this is the payload expected for a token
           render json: {user: user, jwt: token}
+        else
+          render json: {error: "Incorrect Login Information"}
         end
     end
 
