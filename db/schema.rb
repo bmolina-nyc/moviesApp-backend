@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20180424001510) do
   end
 
   create_table "shows", force: :cascade do |t|
+    t.string "name"
+    t.string "genres"
+    t.string "network"
+    t.string "air_date"
+    t.string "air_time"
+    t.string "image"
+    t.string "summary"
+    t.string "premiere_date"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,11 +55,15 @@ ActiveRecord::Schema.define(version: 20180424001510) do
   end
 
   create_table "users_episodes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "episode_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users_shows", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "show_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

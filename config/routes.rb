@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users_shows
   resources :episodes
   resources :shows
+
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   post '/users', to: 'users#create'
   post '/login', to: 'auth#create'
