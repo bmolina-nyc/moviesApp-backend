@@ -2,25 +2,18 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import AppRouter from './routers/AppRouter';
 import { Provider } from 'react-redux';
-import AppRouter from '../routers/AppRouter';
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         This will be a login page
-//       </div>
-//     );
-//   }
-// }
 
 
-const app = (
+//will need to add a store here
+
+
+const App = () => (
   <Provider>
     <AppRouter />
   </Provider>
-);
+)
 
-// export default App;
+export default App;
