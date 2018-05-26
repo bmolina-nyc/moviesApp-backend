@@ -2,7 +2,7 @@ class ShowsController < ApplicationController
 
 
    def show 
-     monster = Monster.all
-     render json: { monsters: monster}
+     show = Show.all
+     render json: { shows: show}
    end
 end

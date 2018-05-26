@@ -1,17 +1,26 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
-import Header from '../components/Header';
+import HomePageHeader from '../components/HomepageHeader'
+import SessionHeader from '../components/SessionHeader';
 import LoginPage from '../components/LoginPage';
 import DashboardPage from '../components/DashboardPage';
+import SearchPage from '../components/SearchPage';
 import NotFoundPage from '../components/NotFoundPage';
+import RegisterPage from '../components/RegisterPage';
+import ContentPage from '../components/ContentPage';
+
 
 const AppRouter = () => (
   <BrowserRouter>
-  <div>
-    <Header />
+  <div> 
+  {localStorage.getItem("jwtToken") ?  <SessionHeader /> : <HomePageHeader /> } 
       <Switch>
         <Route path="/" component={LoginPage} exact={true} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
         <Route path="/dashboard" component={DashboardPage} />
+        <Route path="/search" component={SearchPage} />
+        <Route path="/content" component={ContentPage} />
         <Route component={NotFoundPage} />
       </Switch>
   </div>
