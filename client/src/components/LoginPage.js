@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { loginUser } from '../auth/apiCalls';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 
 class LoginPage extends React.Component {
@@ -12,10 +12,11 @@ class LoginPage extends React.Component {
     message: ""
   }
 
-  reset = () =>{
-    this.setState({username: null, password: null})
+  componentDidMount(){
+    if (localStorage.getItem('jwtToken')){
+      return <Redirect to="/dashboard" />
+    }
   }
-
 
   handleOnSubmit = (event) => {
     event.preventDefault();
@@ -26,21 +27,17 @@ class LoginPage extends React.Component {
       if (object.error){
         this.setState({
             message: "User not found. Please re-enter credentials!",
-            username: null,
-            password: null
-          });
+            username: "",
+            password: ""
+          })
       } else { 
       localStorage.setItem("jwtToken", object.jwt)
       localStorage.setItem("id", object.user.id)
       localStorage.setItem("username", object.user.username)
-      window.location.reload();
       this.props.history.push('/dashboard')
       }
     })  
   }
-
-
-
 
   handleOnChange = (event) => {
     this.setState({ [event.target.name]: event.target.value})
@@ -48,15 +45,18 @@ class LoginPage extends React.Component {
 
 
   render(){
+      if (localStorage.getItem('jwtToken')){
+        return <Redirect to="/dashboard" />
+      } else {
     return(
       <div>
       <h3>Login to your account</h3>
       <div>{this.state.message}</div>
         <form>
         <label htmlFor="username">Username</label>  
-        <input type= "text" name="username" id="password" onChange={this.handleOnChange}/>
+        <input type= "text" name="username" id="password" value={this.state.username} onChange={this.handleOnChange}/>
         <label htmlFor="password">Password</label>  
-        <input type="text" name ="password" id="password" onChange={this.handleOnChange}/>
+        <input type="text" name ="password" id="password" value={this.state.password} onChange={this.handleOnChange}/>
         <button type="submit" onClick={this.handleOnSubmit}>Click to login</button>
         </form>
           <div>
@@ -66,6 +66,7 @@ class LoginPage extends React.Component {
       </div>
     )
   }
+ }
 }
 
 export default LoginPage;

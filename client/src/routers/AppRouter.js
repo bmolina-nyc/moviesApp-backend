@@ -11,21 +11,21 @@ import ContentPage from '../components/ContentPage';
 
 
 const AppRouter = () => (
-  <BrowserRouter>
-  <div> 
-  {localStorage.getItem("jwtToken") ?  <SessionHeader /> : <HomePageHeader /> } 
-      <Switch>
-        <Route path="/" component={LoginPage} exact={true} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/dashboard" component={DashboardPage} />
-        <Route path="/search" component={SearchPage} />
-        <Route path="/content" component={ContentPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-  </div>
 
-</BrowserRouter>
+  <BrowserRouter>
+    <div> 
+      {localStorage.getItem("jwtToken") ?  <SessionHeader /> : <HomePageHeader /> } 
+        <Switch>
+          <Route path="/" component={LoginPage} exact={true} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/dashboard" component={DashboardPage} />
+          <Route path="/search" component={SearchPage} />
+          <Route path="/content" component={ContentPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+    </div>
+  </BrowserRouter>
 )
 
 export default AppRouter; 

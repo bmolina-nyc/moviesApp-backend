@@ -9,6 +9,12 @@ class RegisterPage extends React.Component{
       password: "",
   }
 
+  componentDidMount(){
+    if (localStorage.getItem('jwtToken')){
+      this.props.history.push('/dashboard')
+    }
+  }
+
   handleOnChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -21,12 +27,10 @@ class RegisterPage extends React.Component{
       const registerInfo = JSON.stringify(this.state)
 
       registerUser(registerInfo).then((user)=>{   
-          console.log(user)
         localStorage.setItem("jwtToken", user.jwt)
         localStorage.setItem("id", user.user.id)
         localStorage.setItem("username", user.user.username)
         this.props.history.push('/dashboard')
-        window.location.reload()
       })  
   }
 
