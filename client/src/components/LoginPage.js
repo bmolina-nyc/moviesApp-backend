@@ -34,7 +34,8 @@ class LoginPage extends React.Component {
       localStorage.setItem("jwtToken", object.jwt)
       localStorage.setItem("id", object.user.id)
       localStorage.setItem("username", object.user.username)
-      this.props.history.push('/dashboard')
+      window.location.reload()
+      setTimeout(() => {this.props.history.push('/dashboard')}, 1000)
       }
     })  
   }

@@ -1,11 +1,9 @@
 import React from 'react';
+import HomePageHeader from '../components/HomepageHeader';
+import SessionHeader from '../components/SessionHeader';
 
 class DashboardPage extends React.Component {
 
-  componentDidMount(){
-    this.forceUpdate()
-  }
-  
   render(){
     return(
       <div>
@@ -18,3 +16,5 @@ class DashboardPage extends React.Component {
 
 
 export default DashboardPage;
+
+
