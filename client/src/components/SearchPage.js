@@ -6,7 +6,7 @@ class SearchPage extends React.Component{
 
   state = {
     searchTerm: "",
-    results: []
+    results: null
   }
 
   handleChange = (event)=>{
@@ -16,8 +16,9 @@ class SearchPage extends React.Component{
   handleSubmit = (event) => {
     event.preventDefault();
     showSearch(this.state.searchTerm).then((result) => {
-      this.setState({results: result})    
+      this.setState({results: result.results})
     });
+    console.log(this.state.results)
   };
 
 
@@ -30,18 +31,16 @@ class SearchPage extends React.Component{
                 <br/>
                 <button type="submit">Search</button>
               </form>
-              {console.log(this.state)}
-                {this.state.results.map((object, idx)=>{
-                    return <ShowCard key={idx} show={object.show} /> 
-                }
-              )
-            }
+              {this.state.results && this.state.results.map((object, idx)=>{
+                return <ShowCard key={idx} result={object} />    }
+           )
+         }
+              
             </div>
         )
     }
 
 }
-
 
 export default SearchPage;
 

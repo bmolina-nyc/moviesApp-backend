@@ -25,9 +25,8 @@ class DropDownMenu extends React.Component {
     render(){
         return(
           <div>
-          {console.log(this.state)}
             <button onClick={this.showMenu}>
-              Rate
+              ...
             </button>
               
             {
@@ -37,11 +36,10 @@ class DropDownMenu extends React.Component {
                        this.dropdownMenu = element;
                      }}
                     >
-                      <button> 1 </button>
-                      <button> 2 </button>
-                      <button> 3 </button>
-                      <button> 4 </button>
-                      <button> 5 </button>
+                      <button> Like </button>
+                      <button> Dislike </button>
+                      <button> Already Watched </button>
+                      <button> Add to Watchlist </button>
                     </div>
                   )
                   : (

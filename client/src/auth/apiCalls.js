@@ -28,11 +28,22 @@ export function registerUser(registerParams){
 }
 
 
-//SearchPage component API call to tvmaze.com API
+//SearchPage component API call to themoviedb api by search term
 export function showSearch(searchTerm){
-  return fetch(`http://api.tvmaze.com/search/shows?q=${searchTerm}`,{
+  const api_key = '7aef75bc62baea2317cbec8e9f5c5c61'
+  return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchTerm}`,{
     method: 'GET',
-    max_results: 50
+  })
+  .then((result)=>{
+    return result.json();
+  })
+}
+
+//ShowDetail component API call to call themoviedb api by specific show
+export default function movieDetail(movie_id){
+  const api_key = '7aef75bc62baea2317cbec8e9f5c5c61'
+  return fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${api_key}&language=en-US`,{
+    method: 'GET',
   })
   .then((result)=>{
     return result.json();

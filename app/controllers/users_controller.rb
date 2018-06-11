@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       user = User.new(username: params[:username], password: params[:password])
       if user.save
         token = encode_token({user_id: user.id})  # this is the payload expected for a token
-        render json: {user: user, jwt: token}
+        render json: {user: user, jwt: token, shows: user.shows}
       end
     end
 

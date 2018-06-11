@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :authorized, except: [:welcome]
-
+     
     def encode_token(payload)
       token = JWT.encode(payload, "catman")
     end

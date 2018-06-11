@@ -8,7 +8,7 @@ import SearchPage from '../components/SearchPage';
 import NotFoundPage from '../components/NotFoundPage';
 import RegisterPage from '../components/RegisterPage';
 import ContentPage from '../components/ContentPage';
-
+import ShowDetail from '../components/ShowDetail';
 
 const AppRouter = () => (
 
@@ -22,6 +22,7 @@ const AppRouter = () => (
           <Route path="/dashboard" component={DashboardPage} />
           <Route path="/search" component={SearchPage} />
           <Route path="/content" component={ContentPage} />
+          <Route path="/movies/:movieId" component={ShowDetail} />
           <Route component={NotFoundPage} />
         </Switch>
     </div>

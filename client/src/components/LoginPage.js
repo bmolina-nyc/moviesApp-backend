@@ -40,6 +40,7 @@ class LoginPage extends React.Component {
     })  
   }
 
+
   handleOnChange = (event) => {
     this.setState({ [event.target.name]: event.target.value})
   }
